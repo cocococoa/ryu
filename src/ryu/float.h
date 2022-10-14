@@ -14,8 +14,9 @@ class Single : public Float {
   static const std::uint32_t MantissaMask = 0b00000000011111111111111111111111;
   static const std::int32_t ExponentBits = 8;
   static const std::int32_t MantissaBits = 23;
-  static const std::uint64_t ExponentBias = 127;
+  static const std::int32_t ExponentBias = 127;
 
+  Single();
   Single(float x);
   Single(std::uint32_t x);
   static Single Infinity();
@@ -25,6 +26,7 @@ class Single : public Float {
 
   bool IsInfinite() const;
   bool IsNan() const;
+  bool IsZero() const;
 
   std::int32_t Sign() const;
   std::int32_t Exponent() const;

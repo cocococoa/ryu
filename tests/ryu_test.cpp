@@ -31,6 +31,16 @@ TEST(Single, IsNan) {
   EXPECT_FALSE(Single(-1.0f).IsNan());
 }
 
+TEST(Single, IsZero) {
+  EXPECT_TRUE(Single(+0.0f).IsZero());
+  EXPECT_TRUE(Single(-0.0f).IsZero());
+  EXPECT_FALSE((+Single::Infinity()).IsZero());
+  EXPECT_FALSE((-Single::Infinity()).IsZero());
+  EXPECT_FALSE(Single::NaN().IsZero());
+  EXPECT_FALSE(Single(+1.0f).IsZero());
+  EXPECT_FALSE(Single(-1.0f).IsZero());
+}
+
 TEST(Single, Sign) {
   EXPECT_EQ(0, Single(+1.0f).Sign());
   EXPECT_EQ(1, Single(-1.0f).Sign());
