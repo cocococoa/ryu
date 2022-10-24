@@ -1,14 +1,15 @@
 #include "ryu/float.h"
 
+#include "ryu/common.h"
+
 namespace ryu {
 Single::Single() : d32_(0) {}
-Single::Single(const float x)
-    : d32_(*reinterpret_cast<const std::uint32_t*>(&x)) {}
+Single::Single(const float x) : d32_(floatAsUint32(x)) {}
 Single::Single(const std::uint32_t x) : d32_(x) {}
 Single Single::Infinity() { return Single(Infinity_); }
 Single Single::NaN() { return Single(NaN_); }
 
-float Single::Value() const { return *reinterpret_cast<const float*>(&d32_); }
+float Single::Value() const { return uint32AsFloat(d32_); }
 
 bool Single::IsInfinite() const {
   return (d32_ & ExponentMask) == ExponentMask && Mantissa() == 0;

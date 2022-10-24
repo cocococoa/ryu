@@ -2,8 +2,6 @@
 
 #include <string>
 
-#include "ryu/common.h"
-
 namespace ryu {
 class Float {};
 
